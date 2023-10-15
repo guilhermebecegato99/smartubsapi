@@ -22,7 +22,9 @@ public class Consult {
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Person doctor;
-    private String details;
+
+    @Column(name = "medical_report")
+    private String medicalReport;
     @OneToOne
     @JoinColumn(name = "consult_request_id")
     private ConsultRequest consultRequest;

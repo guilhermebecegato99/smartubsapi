@@ -32,7 +32,7 @@ public class PersonService {
     @Transactional
     public void update(UUID id, UpdatePersonDTO updatePersonDTO){
 
-        Person person = personRepository.findById(id).orElseThrow(RuntimeException::new);
+        Person person = findById(id);
 
         person.update(updatePersonDTO);
 
@@ -41,9 +41,12 @@ public class PersonService {
 
     @Transactional
     public void delete(UUID id){
-
-        Person person = personRepository.findById(id).orElseThrow(RuntimeException::new);
+        Person person = findById(id);
 
         personRepository.delete(person);
+    }
+
+    public Person findById(UUID personId) {
+        return personRepository.findById(personId).orElseThrow(RuntimeException::new);
     }
 }
