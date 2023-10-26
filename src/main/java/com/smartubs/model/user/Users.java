@@ -1,6 +1,5 @@
 package com.smartubs.model.user;
 
-import com.smartubs.model.user.CreateUserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
