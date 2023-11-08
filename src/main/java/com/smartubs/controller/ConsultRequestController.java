@@ -1,5 +1,6 @@
 package com.smartubs.controller;
 
+import com.smartubs.model.consult.ConsultRequest;
 import com.smartubs.model.consult.ConsultRequestDTO;
 import com.smartubs.model.consult.CreateConsultRequestDTO;
 import com.smartubs.model.consult.UpdateConsultRequestDTO;
@@ -28,6 +29,12 @@ public class ConsultRequestController {
     public ResponseEntity<List<ConsultRequestDTO>> listAll() {
         var consultsRequests = consultRequestService.listAll();
         return ResponseEntity.ok(consultsRequests);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ConsultRequest> findById(@PathVariable UUID id) {
+        var idToFind = consultRequestService.findById(id);
+        return ResponseEntity.ok(idToFind);
     }
 
     @PutMapping("/{id}")
