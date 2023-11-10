@@ -1,10 +1,9 @@
 package com.smartubs.repository;
 
+import com.smartubs.model.consult.Consult;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Repository
-public interface ConsultRepository extends JpaRepository<ConsultRepository, UUID> {
+public interface ConsultRepository extends JpaRepository<Consult, UUID> {
 }
