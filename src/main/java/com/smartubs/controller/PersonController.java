@@ -19,11 +19,8 @@ public class PersonController {
     private PersonService personService;
 
     @PostMapping
-    public ResponseEntity<?> createPerson(@RequestBody CreatePersonDTO createPersonDTO){
-
-        personService.create(createPersonDTO);
-
-        return ResponseEntity.ok().build();
+    public ResponseEntity<PersonDTO> createPerson(@RequestBody CreatePersonDTO createPersonDTO){
+        return ResponseEntity.ok(personService.create(createPersonDTO));
     }
 
     @GetMapping

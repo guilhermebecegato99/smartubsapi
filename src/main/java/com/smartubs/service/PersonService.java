@@ -20,9 +20,9 @@ public class PersonService {
     private PersonRepository personRepository;
 
     @Transactional
-    public void create(CreatePersonDTO personDTO){
+    public PersonDTO create(CreatePersonDTO personDTO){
         Person person = new Person(personDTO);
-        personRepository.save(person);
+        return new PersonDTO(personRepository.save(person));
     }
 
     public List<PersonDTO> listAll(){
@@ -48,5 +48,9 @@ public class PersonService {
 
     public Person findById(UUID personId) {
         return personRepository.findById(personId).orElseThrow(RuntimeException::new);
+    }
+
+    public Person findByUserId(UUID userId) {
+        return personRepository.findByUsersId(userId).orElseThrow(() -> new RuntimeException("Pessoa nao encontrada!"));
     }
 }

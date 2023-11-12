@@ -30,17 +30,19 @@ public class Person {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Users users;
+    private String phone;
 
     public Person(CreatePersonDTO personDTO){
         this.birthDate = personDTO.getBirthDate();
         this.cardSUSNumber = personDTO.getCardSUSNumber();
         this.name = personDTO.getName();
         this.email = personDTO.getEmail();
-        this.users = new Users(personDTO.getUser());
+        this.users = new Users(personDTO.getUsers());
+        this.phone = "+55" + personDTO.getPhone();
+        this.document = personDTO.getDocument();
     }
 
     public void update(UpdatePersonDTO updatePersonDTO){
-
         if(Objects.nonNull(updatePersonDTO.getBirthDate())){
             this.birthDate = updatePersonDTO.getBirthDate();
         }

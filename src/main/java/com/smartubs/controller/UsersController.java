@@ -1,27 +1,21 @@
 package com.smartubs.controller;
 
-import com.smartubs.msg.Destination;
-import com.smartubs.msg.Message;
-import com.smartubs.msg.MessageClient;
-import com.smartubs.msg.MessageDTO;
+import com.smartubs.model.person.PersonDTO;
+import com.smartubs.model.user.CreateUserDTO;
+import com.smartubs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
 public class UsersController {
 
     @Autowired
-    private MessageClient messageClient;
+    private UserService userService;
 
-    @GetMapping
-    public String sendMessage() {
-        var messageDTO = new MessageDTO(List.of(new Message(List.of(new Destination("5544991149674")), "Teste")));
-        messageClient.sendMessage(messageDTO);
-        return "Deu bom";
+    @PostMapping
+    public ResponseEntity<PersonDTO> login(@RequestBody CreateUserDTO userDTO) {
+        return ResponseEntity.ok(userService.login(userDTO));
     }
 }

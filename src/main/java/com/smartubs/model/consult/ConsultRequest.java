@@ -1,5 +1,6 @@
 package com.smartubs.model.consult;
 
+import com.smartubs.model.person.DoctorSpeciality;
 import com.smartubs.model.person.Person;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,6 +32,7 @@ public class ConsultRequest {
     private LocalDateTime lastModifiedAt;
     private ConsultRequestStatus status;
     private String details;
+    private DoctorSpeciality speciality;
 
     public ConsultRequest(CreateConsultRequestDTO dto, Person patient) {
         this.patient = patient;
@@ -40,6 +42,7 @@ public class ConsultRequest {
         this.lastModifiedAt = LocalDateTime.now();
         this.status = ConsultRequestStatus.OPEN;
         this.details = dto.details();
+        this.speciality = dto.speciality();
     }
 
     public void update(UpdateConsultRequestDTO dto) {

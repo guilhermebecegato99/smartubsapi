@@ -12,11 +12,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CreatePersonDTO {
 
-    private CreateUserDTO user;
+    private CreateUserDTO users;
     private String name;
     private String email;
     private String document;
     private LocalDate birthDate;
     private PersonSex personSex;
     private String cardSUSNumber;
+    private String phone;
 }
